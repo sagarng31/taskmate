@@ -20,6 +20,12 @@ function App() {
     },
   ]);
 
+  const [show, setShow] = useState(true);
+
+  function handleShow() {
+    setShow(!show);
+  }
+
   function handleDelete(dropId) {
     console.log(dropId);
     setTasks(tasks.filter((task) => task.id !== dropId));
@@ -29,17 +35,21 @@ function App() {
     <>
       <section className="App">
         <h1>Task List</h1>
+        <button className="trigger" onClick={handleShow}>
+          {show ? "Hide" : "Show"}
+        </button>
         <ul>
-          {tasks.map(({ id, name }) => (
-            <li key={id}>
-              <span>
-                {id} - {name}
-              </span>
-              <button onClick={() => handleDelete(id)} className="delete">
-                Delete
-              </button>
-            </li>
-          ))}
+          {show &&
+            tasks.map(({ id, name, completed }) => (
+              <li key={id} className={completed ? "completed" : "incomplete"}>
+                <span>
+                  {id} - {name}
+                </span>
+                <button onClick={() => handleDelete(id)} className="delete">
+                  Delete
+                </button>
+              </li>
+            ))}
         </ul>
       </section>
     </>
