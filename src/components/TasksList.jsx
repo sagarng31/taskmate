@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TaskCard } from "./TaskCard";
 import { BoxCard } from "./BoxCard";
 
-export const TasksList = () => {
+export const TasksList = ({ info }) => {
   const [tasks, setTasks] = useState([
     {
       id: 2451,
@@ -41,7 +41,12 @@ export const TasksList = () => {
       <ul>
         {show &&
           tasks.map((task) => (
-            <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
+            <TaskCard
+              info={info}
+              key={task.id}
+              task={task}
+              handleDelete={handleDelete}
+            />
           ))}
       </ul>
       <BoxCard result="success">
