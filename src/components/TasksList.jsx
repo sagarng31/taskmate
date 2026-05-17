@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TaskCard } from "./TaskCard";
-import { BoxCard } from "./BoxCard";
+import "./TaskList.css";
 
 export const TasksList = ({ info }) => {
   const [tasks, setTasks] = useState([
@@ -33,12 +33,14 @@ export const TasksList = ({ info }) => {
   }
 
   return (
-    <>
-      <h1>Task List</h1>
-      <button className="trigger" onClick={handleShow}>
-        {show ? "Hide" : "Show"}
-      </button>
+    <section className="tasklist">
       <ul>
+        <div className="header">
+          <h1>Task List</h1>
+          <button className="trigger" onClick={handleShow}>
+            {show ? "Hide" : "Show"}
+          </button>
+        </div>
         {show &&
           tasks.map((task) => (
             <TaskCard
@@ -49,27 +51,6 @@ export const TasksList = ({ info }) => {
             />
           ))}
       </ul>
-      <BoxCard result="success">
-        <div className="title">Lorem ipsum dolor sit amet.</div>
-        <div className="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          asperiores a excepturi aspernatur.
-        </div>
-      </BoxCard>
-      <BoxCard result="warning">
-        <div className="title">Lorem ipsum dolor sit amet.</div>
-        <div className="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          asperiores a excepturi aspernatur.
-        </div>
-      </BoxCard>
-      <BoxCard result="alert">
-        <div className="title">Lorem ipsum dolor sit amet.</div>
-        <div className="description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          asperiores a excepturi aspernatur.
-        </div>
-      </BoxCard>
-    </>
+    </section>
   );
 };
