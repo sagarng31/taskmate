@@ -2,25 +2,7 @@ import { useState } from "react";
 import { TaskCard } from "./TaskCard";
 import "./TaskList.css";
 
-export const TasksList = ({ info }) => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 2451,
-      name: "Study React",
-      completed: true,
-    },
-    {
-      id: 4215,
-      name: "Study JavaScript",
-      completed: false,
-    },
-    {
-      id: 1240,
-      name: "Learn Node",
-      completed: false,
-    },
-  ]);
-
+export const TasksList = ({ tasks, setTasks }) => {
   const [show, setShow] = useState(true);
 
   function handleShow() {
@@ -43,12 +25,7 @@ export const TasksList = ({ info }) => {
         </div>
         {show &&
           tasks.map((task) => (
-            <TaskCard
-              info={info}
-              key={task.id}
-              task={task}
-              handleDelete={handleDelete}
-            />
+            <TaskCard key={task.id} task={task} handleDelete={handleDelete} />
           ))}
       </ul>
     </section>

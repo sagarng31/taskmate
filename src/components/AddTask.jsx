@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddTask.css";
 
-export const AddTask = () => {
+export const AddTask = ({ tasks, setTasks }) => {
   const [taskValue, setTaskValue] = useState("");
   const [taskStatus, setTaskStatus] = useState(false);
   const handleTask = (e) => {
@@ -21,8 +21,10 @@ export const AddTask = () => {
       name: taskValue,
       completed: Boolean(taskStatus),
     };
+    setTasks([...tasks, task]);
     handleReset();
   };
+  console.log(tasks);
   return (
     <section className="addtask">
       <form onSubmit={handleSubmit}>
