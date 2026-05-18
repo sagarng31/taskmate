@@ -11,8 +11,10 @@ function App() {
     <>
       <section className="App">
         <Header />
-        <AddTask tasks={tasks} setTasks={setTasks} />
-        <TasksList tasks={tasks} setTasks={setTasks} />
+        <main>
+          <AddTask tasks={tasks} setTasks={setTasks} />
+          <TasksList tasks={tasks} setTasks={setTasks} />
+        </main>
         <Footer />
       </section>
     </>
