@@ -1,30 +1,31 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./AddTask.css";
 
 export const AddTask = ({ tasks, setTasks }) => {
-  const [taskValue, setTaskValue] = useState("");
+  // const [taskValue, setTaskValue] = useState("");
   const [taskStatus, setTaskStatus] = useState(false);
+  const taskRef = useRef();
   const handleTask = (e) => {
-    setTaskValue(e.target.value);
+    // setTaskValue(e.target.value);
+    console.log(taskRef.current.value);
   };
   const handleStatus = (e) => {
     setTaskStatus(e.target.value);
   };
   const handleReset = () => {
-    setTaskValue("");
+    // setTaskValue("");
     setTaskStatus(false);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     const task = {
       id: Math.floor(Math.random() * 10000),
-      name: taskValue,
+      // name: taskValue,
       completed: Boolean(taskStatus),
     };
     setTasks([...tasks, task]);
     handleReset();
   };
-  console.log(tasks);
   return (
     <section className="addtask">
       <form onSubmit={handleSubmit}>
@@ -34,7 +35,8 @@ export const AddTask = ({ tasks, setTasks }) => {
           placeholder="Task Name"
           autoComplete="off"
           onChange={handleTask}
-          value={taskValue}
+          // value={taskValue}
+          ref={taskRef}
         />
         <select value={taskStatus} onChange={handleStatus}>
           <option value={false}>Pending</option>
@@ -45,7 +47,7 @@ export const AddTask = ({ tasks, setTasks }) => {
           Reset
         </span>
       </form>
-      <p>{taskValue}</p>
+      {/* <p>{taskValue}</p> */}
     </section>
   );
 };
